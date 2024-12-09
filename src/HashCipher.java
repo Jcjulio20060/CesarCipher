@@ -2,8 +2,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class HashCipher{
-    public String Encript(String message) throws NoSuchAlgorithmException {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+    public String Encrypt(String message, boolean type) throws NoSuchAlgorithmException {
+        String tipo;
+        if(type){
+            tipo = "SHA-256";
+        } else {
+            tipo = "MD5";
+        }
+        MessageDigest digest = MessageDigest.getInstance(tipo);
         byte[] hashByte = digest.digest(message.getBytes());
 
         StringBuilder sb = new StringBuilder();

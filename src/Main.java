@@ -75,10 +75,18 @@ public class Main {
     public static void hash() throws NoSuchAlgorithmException {
         Scanner sc = new Scanner(System.in);
         HashCipher hash = new HashCipher();
+        boolean type = true;
         System.out.print("Qual seria a mensagem que você quer encriptografar ?\nMessage: ");
         String mensagem = sc.next();
+        System.out.print("Selecione qual é o tipo de hash que você deseja:\n1 - SHA-256\n2 - MD5\nR: ");
+        int option = sc.nextInt();
+        switch (option){
+            case 1 -> type = true;
+            case 2 -> type = false;
+            default -> System.out.println("Opção não encontrada, tente novamente...");
+        }
         System.out.println("Encriptando...");
-        String text = String.valueOf(hash.Encript(mensagem));
+        String text = String.valueOf(hash.Encrypt(mensagem, type));
         Timer(1000);
         System.out.println("Mensagem Encriptografada:");
         System.out.println(text + "\n");
